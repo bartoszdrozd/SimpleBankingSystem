@@ -1,0 +1,30 @@
+def luhn_algorithm(card_to_check):
+    luhn = True
+    global scope
+    global sum_to_check
+    global checksum
+    while luhn:
+        card_iterator = 1
+        sum_to_check = 0
+        card_to_check = str(card_to_check)
+        for i in card_to_check:
+            if card_iterator < 16:
+                if card_iterator % 2 != 0:
+                    i = 2 * int(i)
+                    if int(i) > 9:
+                        i = int(i) - 9
+                sum_to_check += int(i)
+                card_iterator += 1
+            else:
+                checksum = int(i)
+                break
+        if (sum_to_check + checksum) % 10 != 0:
+            print("No!")
+            return
+        else:
+            print("great!")
+            return
+
+luhn_algorithm(3000003972196503)
+luhn_algorithm(4000009280593669)
+luhn_algorithm(4000003885632279)
